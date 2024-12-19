@@ -1,0 +1,87 @@
+<!--<table>-->
+<!--  <tr>-->
+<!--    <td colspan="5">-->
+<!--      <h3>Order Items:</h3>-->
+<!--    </td>-->
+<!--  </tr>-->
+<!--  <tr *ngFor="let item of order.items">-->
+<!--    <td>-->
+<!--      <a routerLink="/food/{{item.food.id}}">-->
+<!--        <img [src]="item.food.imageUrl"/>-->
+<!--      </a>-->
+<!--    </td>-->
+<!--    <td>-->
+<!--      {{item.food.name}}-->
+<!--    </td>-->
+<!--    <td>-->
+<!--      {{item.food.price | currency}}-->
+<!--    </td>-->
+<!--    <td>-->
+<!--      {{item.quantity}}-->
+<!--    </td>-->
+<!--    <td>-->
+<!--      {{item.price | currency}}-->
+<!--    </td>-->
+<!--  </tr>-->
+<!--  <tr>-->
+<!--    <td colspan="3"></td>-->
+<!--    <td>-->
+<!--      <strong>-->
+<!--        Total :-->
+<!--      </strong>-->
+<!--    </td>-->
+<!--    <td>-->
+<!--      <strong>-->
+<!--        {{order.totalPrice | currency}}-->
+<!--      </strong>-->
+<!--    </td>-->
+<!--  </tr>-->
+<!--</table>-->
+
+<div class="table-container">
+<table class="table" >
+  <thead>
+  <tr>
+    <th scope="col">Image</th>
+    <th scope="col">Product</th>
+    <th scope="col">Quantity</th>
+    <th scope="col">Price</th>
+    <th scope="col">Total</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let item of order.items">
+    <td>
+      <div class="media">
+        <div class="d-flex">
+          <img style="width: 150px; height: 157px;" [src]="item.food.imageUrl" [alt]="item.food.name" />
+        </div>
+      </div>
+    </td>
+    <td>
+      <div class="media">
+        <div class="media-body">
+          <p routerLink="/food/{{item.food.id}}" >{{item.food.name}}</p>
+        </div>
+      </div>
+    </td>
+    <td>
+      <div class="product_count quantity-control">
+        <span><strong>{{item.quantity}}</strong></span>
+      </div>
+    </td>
+    <td>
+      <h5>{{item.food.price | currency}}</h5>
+    </td>
+    <td>
+      <h5>{{item.price | currency}}</h5>
+    </td>
+  </tr>
+  <tr class="bottom_button">
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  </tbody>
+</table>
+</div>

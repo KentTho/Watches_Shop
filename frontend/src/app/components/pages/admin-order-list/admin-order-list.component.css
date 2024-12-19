@@ -1,0 +1,124 @@
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading style */
+h1 {
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Empty order message */
+div {
+  font-size: 18px;
+  color: #888;
+  text-align: center;
+  margin-top: 30px;
+}
+
+/* Table styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+th, td {
+  padding: 16px 20px;
+  text-align: left;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+th {
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+td {
+  background-color: #fff;
+  color: #333;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+/* Row hover effect */
+tr:hover {
+  background-color: #f9f9f9;
+  cursor: pointer;
+}
+
+/* Order status dropdown */
+select {
+  padding: 8px 12px;
+  border: 1px solid #007bff;
+  border-radius: 4px;
+  background-color: #f8f9fa;
+  font-size: 14px;
+  width: 100%;
+  transition: border-color 0.3s ease;
+}
+
+select:focus {
+  outline: none;
+  border-color: #0056b3;
+}
+
+/* Styling for action buttons (if any in the future) */
+button {
+  padding: 8px 12px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+
+  table {
+    font-size: 12px;
+  }
+
+  th, td {
+    padding: 10px 12px;
+  }
+
+  select {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+}

@@ -1,0 +1,46 @@
+<div class="orders-container">
+  <h2>Your Orders</h2>
+
+  <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+
+  <div *ngIf="isLoading" class="spinner">Loading...</div>
+
+      <table class="table table-striped" *ngIf="!isLoading && orders.length > 0">
+        <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>Date Purchased</th>
+          <th>Status</th>
+          <th>Total</th>
+          <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let order of orders">
+          <td><a class="navi-link">{{ order._id }}</a></td>
+          <td>{{ order.createdAt | date }}</td>
+          <td >
+            <span [ngClass]="{
+                'badge badge-info m-0': order.status === 'SHIPPED',
+                'badge badge-danger m-0': order.status === 'CANCELLED',
+                'badge badge-warning m-0': order.status === 'PAID',
+                'badge badge-success m-0':order.status === 'DELIVERED'
+              }" class="custom-badge">
+               {{ order.status }}
+            </span>
+          </td>
+          <td><span>{{ order.totalPrice | currency }}</span></td>
+          <td>
+            <button
+              (click)="viewOrderDetail(order._id)" class="btn">
+              Views
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <div *ngIf="orders.length === 0 && !isLoading">
+        No orders found.
+      </div>
+</div>
+

@@ -1,0 +1,35 @@
+<!-- order-list.component.html -->
+
+<div class="container">
+  <h1>Order List</h1>
+  <div *ngIf="orders.length === 0">No orders found!</div>
+
+  <table *ngIf="orders.length > 0" class="table">
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Total Price</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let order of orders">
+      <td>{{ order.id }}</td>
+      <td>{{ order.name }}</td>
+      <td>{{ order.totalPrice | currency }}</td>
+      <td>{{ order.status }}</td>
+      <td>
+        <select (change)="updateStatus(order.id.toString(), $event)" [value]="order.status">
+          <option value="NEW">New</option>
+          <option value="PAYED">Paid</option>
+          <option value="SHIPPED">Shipped</option>
+          <option value="DELIVERED">Delivered</option>
+          <option value="CANCELLED">Cancelled</option>
+        </select>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

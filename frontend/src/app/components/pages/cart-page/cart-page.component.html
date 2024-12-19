@@ -1,0 +1,104 @@
+
+<main>
+  <!-- Hero Area Start-->
+  <div class="slider-area ">
+    <div class="single-slider slider-height2 d-flex align-items-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-12">
+            <div class="hero-cap text-center">
+              <h2>Cart List</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-not-found
+    [visible]="!cart || !cart.items.length"
+    notFoundMessage="Cart Page Is Empty!"
+    resetLinkText="Go To Homepage"
+  ></app-not-found>
+  <!--================Cart Area =================-->
+  <section class="cart_area section_padding">
+    <div class="container">
+      <div class="cart_inner">
+        <div class="table-responsive" >
+          <table class="table" >
+            <thead>
+            <tr>
+              <th scope="col">Product</th>
+              <th scope="col">Price</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Total</th>
+              <th scope="col">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let cartItem of cart.items">
+              <td>
+                <div class="media">
+                  <div class="d-flex">
+                    <img [src]="cartItem.food.imageUrl" [alt]="cartItem.food.name" />
+                  </div>
+                  <div class="media-body">
+                    <p routerLink="/food/{{cartItem.food.id}}" >{{cartItem.food.name}}</p>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <h5>{{cartItem.food.price | currency}}</h5>
+              </td>
+              <td>
+                <div class="product_count quantity-control">
+                  <button class="genric-btn info-border radius" (click)="changeQuantity(cartItem, (cartItem.quantity - 1).toString())" [disabled]="cartItem.quantity <= 1"><i class="ti-minus"></i></button>
+                  <span>{{cartItem.quantity}}</span>
+                  <button class="genric-btn info-border radius" (click)="changeQuantity(cartItem, (cartItem.quantity + 1).toString())" [disabled]="cartItem.quantity >= 100"><i class="ti-plus"></i></button>
+                </div>
+              </td>
+              <td>
+                <h5>{{cartItem.price | currency}}</h5>
+              </td>
+              <td>
+                <button class="genric-btn danger circle" (click)="removeFromCart(cartItem)">
+                Remove
+                </button>
+              </td>
+            </tr>
+            <tr class="bottom_button">
+              <td>
+
+              </td>
+              <td></td>
+              <td></td>
+              <td>
+                <div class="cupon_text float-right">
+                  <button class="btn_1" (click)="removeAllFromCart()" >Remove Cart</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+              </td>
+              <td></td>
+              <td>
+                <h3>Count:</h3>
+                <h3>Subtotal:</h3>
+              </td>
+              <td *ngFor="let cartItem of cart.items">
+                <h3>{{cart.totalCount}}</h3>
+                <h3>{{cartItem.price | currency}}</h3>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+          <div class="checkout_btn_inner float-right">
+            <a class="btn_1" routerLink="/food">Continue Shopping</a>
+            <a class="btn_1 checkout_btn_1" routerLink="/checkout" >Proceed to checkout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--================End Cart Area =================-->
+</main>

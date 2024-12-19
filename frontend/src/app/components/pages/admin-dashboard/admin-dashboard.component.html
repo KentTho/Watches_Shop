@@ -1,0 +1,70 @@
+<div class="container">
+  <h1>Manage Watches</h1>
+  <!-- View thêm/sửa sản phẩm -->
+  <div *ngIf="isDetailView">
+    <div *ngIf="selectedFood">
+    <h2>{{ isEditMode ? 'Edit' : 'Add' }} Watches</h2>
+    <form (ngSubmit)="saveFood()">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input [(ngModel)]="selectedFood.name" name="name" id="name" class="form-control" required />
+      </div>
+      <div class="form-group">
+        <label for="price">Price</label>
+        <input [(ngModel)]="selectedFood.price" name="price" id="price" class="form-control" type="number" required />
+      </div>
+      <div class="form-group">
+        <label for="tags">Tags</label>
+        <input [(ngModel)]="selectedFood.tags" name="tags" id="tags" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="imageUrl">Image URL</label>
+        <input [(ngModel)]="selectedFood.imageUrl" name="imageUrl" id="imageUrl" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="origins">Origins</label>
+        <input [(ngModel)]="selectedFood.origins" name="origins" id="origins" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="cookTime">Time</label>
+        <input [(ngModel)]="selectedFood.cookTime" name="cookTime" id="cookTime" class="form-control" />
+      </div>
+      <button type="submit" class="btn btn-success">{{ isEditMode ? 'Save Changes' : 'Add Watches' }}</button>
+      <button type="button" class="btn btn-warning" (click)="resetView()">BACK</button>
+    </form>
+  </div>
+  </div>
+
+  <!-- View chính (danh sách sản phẩm) -->
+  <div *ngIf="!isDetailView">
+    <button (click)="addFood()"  class="btn btn-primary">Add Watches</button>
+    <table class="table">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Category</th>
+      <th>Price</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let food of foods">
+      <td>{{ food.name }}</td>
+      <td>{{ food.tags}}</td>
+      <td>{{ food.price | currency }}</td>
+      <td class="group-btn">
+        <button (click)="editFood(food)" class="btn btn-warning">Edit</button>
+        <button (click)="deleteFood(food.id)" class="btn btn-danger">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  </div>
+
+
+</div>
+
+
+
+
+

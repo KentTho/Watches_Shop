@@ -1,0 +1,47 @@
+
+
+<main>
+  <!-- Hero Area Start-->
+  <div class="slider-area ">
+  <div class="single-slider slider-height2 d-flex align-items-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-12">
+          <div class="hero-cap text-center">
+            <h2>Order Success</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="contact_form" >
+    <div class="container">
+      <div class="content" *ngIf="order">
+      <h1>Order</h1>
+
+      <div class="details">
+        <div><strong>ID</strong>#{{order.id}}</div>
+        <div><strong>Date</strong> {{order.createdAt | date:'medium'}}</div>
+        <div><strong>Name</strong> {{order.name}}</div>
+        <div><strong>Address</strong> {{order.address}}</div>
+        <div><strong>Status</strong> {{order.status}}</div>
+        <div *ngIf="order.paymentId">
+          <strong>Payment ID</strong> {{order.paymentId}}
+        </div>
+      </div>
+
+
+    </div>
+    </div>
+    <div class="map">
+      <app-title title="Shipping Address"></app-title>
+      <map [order]="order" [readonly]="true"></map>
+    </div>
+  </div>
+
+
+  <order-items-list [order]="order"></order-items-list>
+
+
+</main>

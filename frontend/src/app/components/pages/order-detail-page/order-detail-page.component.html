@@ -1,0 +1,40 @@
+<div class="order-detail-container">
+  <h2>Order Details</h2>
+
+  <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+
+  <div *ngIf="isLoading" class="spinner">Loading...</div>
+
+  <div *ngIf="!isLoading">
+    <p><strong>Order ID:</strong> {{ orderDetail._id }}</p>
+    <p><strong>Date:</strong> {{ orderDetail.createdAt | date }}</p>
+    <p><strong>Total:</strong> {{ orderDetail.totalPrice | currency }}</p>
+    <p [ngClass]="{
+                'badge badge-info m-0': orderDetail.status === 'SHIPPED',
+                'badge badge-danger m-0': orderDetail.status === 'CANCELLED',
+                'badge badge-warning m-0': orderDetail.status === 'PAID',
+                'badge badge-success m-0':orderDetail.status === 'DELIVERED'
+              }" class="custom-badge" >
+      <strong>Status:</strong>
+      {{ orderDetail.status }}
+    </p>
+
+    <h3>Details:</h3>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Quantity</th>
+        <th>Price</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of orderDetail.items">
+        <td>{{ item.food.name }}</td>
+        <td>{{ item.quantity }}</td>
+        <td>{{ item.price | currency }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

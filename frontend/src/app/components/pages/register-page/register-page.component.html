@@ -1,0 +1,87 @@
+
+<main>
+  <!-- Hero Area Start-->
+  <div class="slider-area ">
+    <div class="single-slider slider-height2 d-flex align-items-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-12">
+            <div class="hero-cap text-center">
+              <h2>Register</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Hero Area End-->
+  <!--================login_part Area =================-->
+  <section class="login_part section_padding ">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 col-md-6">
+          <div class="login_part_form">
+            <div class="login_part_form_iner">
+              <h3>Welcome Back ! <br>
+                Please Register now</h3>
+              <form [formGroup]="registerForm" (ngSubmit)="submit()" class="row contact_form" action="#" method="post" novalidate="novalidate">
+                <text-input class="w-100"
+                  [control]="fc.name"
+                  [showErrorsWhen]="isSubmitted"
+                  label="Name">
+                  `</text-input>
+
+                <text-input class="w-100"
+                  [control]="fc.email"
+                  [showErrorsWhen]="isSubmitted"
+                  label="Email"
+                  type="email">
+                  `</text-input>
+
+
+                <text-input class="w-100"
+                  [control]="fc.password"
+                  [showErrorsWhen]="isSubmitted"
+                  label="Password"
+                  type="password">
+                  `</text-input>
+
+                <text-input class="w-100"
+                  [control]="fc.confirmPassword"
+                  [showErrorsWhen]="isSubmitted"
+                  label="Confirm Password"
+                  type="password">
+                  `</text-input>
+
+                <text-input class="w-100"
+                  [control]="fc.address"
+                  [showErrorsWhen]="isSubmitted"
+                  label="Address">
+                  `</text-input>
+
+                <div class="col-md-12 form-group">
+
+                  <button type="submit" value="submit" class="btn_3">
+                    Register
+                  </button>
+                  <a class="lost_pass" href="#">forget password?</a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6">
+          <div class="login_part_text text-center">
+            <div class="login_part_text_iner">
+              <h2>Welcome Back</h2>
+              <p>Enter your personal information to use all site features</p>
+              <a routerLink="/login" [queryParams]="{returnUrl: returnUrl}" class="btn_3">Login</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--================login_part end =================-->
+</main>
+

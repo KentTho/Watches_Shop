@@ -1,0 +1,92 @@
+
+<main>
+  <!-- Hero Area Start-->
+  <div class="slider-area ">
+    <div class="single-slider slider-height2 d-flex align-items-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-12">
+            <div class="hero-cap text-center">
+              <h2>Checkout</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--================Checkout Area =================-->
+  <section class="checkout_area section_padding">
+    <div class="container">
+      <div class="contact_form" >
+        <div class="returning_customer">
+          <div class="check_title">
+            <h2>
+              Returning Customer?
+              <a routerLink="/login" >Click here to login</a>
+            </h2>
+          </div>
+          <p>
+            If you have shopped with us before, please enter your details in the
+            boxes below. If you are a new customer, please proceed to the
+            Billing & Shipping section.
+          </p>
+          <form class="row contact_form" action="#" method="post" novalidate="novalidate" [formGroup]="checkoutForm" >
+            <div class="col-md-6 form-group p_star">
+              <text-input [control]="fc.name" label="Name"></text-input>
+            </div>
+            <div class="col-md-6 form-group p_star">
+              <text-input [control]="fc.email" label="Email"></text-input>
+            </div>
+            <div class="col-md-12 form-group p_star">
+              <text-input [control]="fc.address" label="Address"></text-input>
+            </div>
+          </form>
+        </div>
+
+        <div class="map">
+          <app-title
+            title="Choose Your Address On Map"
+            fontSize="1.6rem" align="center"></app-title>
+          <map [order]="order"></map>
+        </div>
+      </div>
+
+      <div class="billing_details">
+        <div class="row">
+          <div class="col-lg-8">
+            <div class="order_box">
+              <h2>Your Order</h2>
+              <ul class="list">
+                <li>
+                  <a>Product
+                    <span>Total</span>
+                  </a>
+                </li>
+                <li *ngFor="let item of order.items" >
+                  <a>{{item.food.name}}
+                    <span class="middle">x {{item.quantity}} </span>
+                    <span class="last"> {{item.food.price | currency}}</span>
+                  </a>
+                </li>
+              </ul>
+              <ul class="list list_2" *ngFor="let item of order.items" >
+                <li>
+                  <a >Subtotal:
+                    <span>{{item.price | currency}}</span>
+                  </a>
+                </li>
+                <li>
+                  <strong>Total:
+                    <span>{{order.totalPrice | currency}}</span>
+                  </strong>
+                </li>
+              </ul>
+              <a class="btn_3" (click)="createOrder()" >Go To Payment</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--================End Checkout Area =================-->
+</main>

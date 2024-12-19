@@ -1,0 +1,30 @@
+
+
+
+
+
+.quantity-control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.quantity-control button {
+  background-color: #f1f1f1;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.quantity-control button:disabled {
+  background-color: #e0e0e0;
+  cursor: not-allowed;
+}
+
+.quantity-control button:hover:not(:disabled) {
+  background-color: #d1d1d1;
+}
